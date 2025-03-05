@@ -48,6 +48,7 @@ void AFadedPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFadedPlayer::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFadedPlayer::Look);
+		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Triggered, this, &AFadedPlayer::Sprint);
 	}
 	else {
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
@@ -72,4 +73,13 @@ void AFadedPlayer::Look(const FInputActionValue& Value) {
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AFadedPlayer::Sprint(const FInputActionValue& Value) {
+    if (Value.Get<bool>()) {
+        GetCharacterMovement()->MaxWalkSpeed = 500.f;
+    }
+    else {
+        GetCharacterMovement()->MaxWalkSpeed = 200.f;
+    }
 }
