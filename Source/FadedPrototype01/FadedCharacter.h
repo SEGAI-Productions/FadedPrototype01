@@ -25,3 +25,18 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 };
+
+
+UINTERFACE(Blueprintable, BlueprintType)
+class UFadedCharacterInterface : public UInterface {
+	GENERATED_BODY()
+};
+
+class IFadedCharacterInterface {
+	GENERATED_BODY()
+public:
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FadedCharacterInterface")
+	void TestFunction1();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FadedCharacterInterface")
+	void TestFunction2();
+};
