@@ -85,6 +85,7 @@ void AFadedPlayer::Sprint(const FInputActionValue& Value) {
 void AFadedPlayer::Dodge(const FInputActionValue& Value) {
     if (Value.Get<bool>()) {
         FGameplayTag DodgeTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Dodge"));
-        ActivateAbilityByTag(DodgeTag);
+        bool activated = ActivateAbilityByTag(DodgeTag);
+		UE_LOG(LogTemp, Warning, TEXT("Dodge activated: %s"), activated ? TEXT("true") : TEXT("false"));
     }
 }
