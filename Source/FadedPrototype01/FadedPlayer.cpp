@@ -7,6 +7,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "GameplayTagsManager.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -42,11 +43,10 @@ void AFadedPlayer::NotifyControllerChanged() {
 
 void AFadedPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFadedPlayer::Move);
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFadedPlayer::Look);
+		EnhancedInputComponent->BindAction(MoveAction  , ETriggerEvent::Triggered, this, &AFadedPlayer::Move  );
+		EnhancedInputComponent->BindAction(LookAction  , ETriggerEvent::Triggered, this, &AFadedPlayer::Look  );
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Triggered, this, &AFadedPlayer::Sprint);
+		EnhancedInputComponent->BindAction(DodgeAction , ETriggerEvent::Triggered, this, &AFadedPlayer::Dodge );
 	}
 	else {
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
@@ -79,5 +79,12 @@ void AFadedPlayer::Sprint(const FInputActionValue& Value) {
     }
     else {
         GetCharacterMovement()->MaxWalkSpeed = 200.f;
+    }
+}
+
+void AFadedPlayer::Dodge(const FInputActionValue& Value) {
+    if (Value.Get<bool>()) {
+        FGameplayTag DodgeTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Dodge"));
+        ActivateAbilityByTag(DodgeTag);
     }
 }

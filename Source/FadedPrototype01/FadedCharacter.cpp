@@ -12,9 +12,24 @@ AFadedCharacter::AFadedCharacter() {
     if (MeshAsset.Succeeded()) { GetMesh()->SetSkeletalMesh(MeshAsset.Object); }
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("Ability System Component"));
 }
+void AFadedCharacter::BeginPlay() {
+    Super::BeginPlay();
+    AbilitySystemComponent->InitAbilityActorInfo(this, this);
+    static const FString AbilityPath = TEXT("/Game/Blueprints/Characters/Common/Abilities/GA_Dodge");
+    UClass* AbilityClass = StaticLoadClass(UGameplayAbility::StaticClass(), nullptr, *AbilityPath);
+    FGameplayAbilitySpec AbilitySpec(AbilityClass, 1);
+    AbilitySystemComponent->GiveAbility(AbilitySpec);
+}
 UAbilitySystemComponent* AFadedCharacter::GetAbilitySystemComponent() const {
     return AbilitySystemComponent;
 }
 void AFadedCharacter::TestFunction1_Implementation() {
     UE_LOG(LogTemp, Warning, TEXT("TestFunction1_Implementation"));
+}
+
+// Activate an ability that matches the specified tag
+bool AFadedCharacter::ActivateAbilityByTag(const FGameplayTag& AbilityTag) {
+    FGameplayTagContainer TagContainer;
+    TagContainer.AddTag(AbilityTag);
+    return AbilitySystemComponent->TryActivateAbilitiesByTag(TagContainer);
 }
