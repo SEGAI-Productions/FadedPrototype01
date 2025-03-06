@@ -9,11 +9,11 @@
 #include "FadedCharacter.generated.h"
 
 UINTERFACE(Blueprintable, BlueprintType)
-class UFadedCharacter1Interface : public UInterface {
+class UFadedCharacterInterface : public UInterface {
 	GENERATED_BODY()
 };
 
-class IFadedCharacter1Interface {
+class IFadedCharacterInterface {
 	GENERATED_BODY()
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FadedCharacterInterface")
@@ -21,7 +21,7 @@ public:
 };
 
 UCLASS(config = Game)
-class AFadedCharacter : public ACharacter, public IAbilitySystemInterface, public IFadedCharacter1Interface {
+class AFadedCharacter : public ACharacter, public IAbilitySystemInterface, public IFadedCharacterInterface {
 	GENERATED_BODY()
 public:
 	AFadedCharacter();
