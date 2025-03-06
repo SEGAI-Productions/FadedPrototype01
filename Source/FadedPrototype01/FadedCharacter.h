@@ -24,10 +24,9 @@ class AFadedCharacter : public ACharacter, public IAbilitySystemInterface, publi
 public:
 	AFadedCharacter();
 protected:
-	virtual void BeginPlay() override;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Abilities")
+	UAbilitySystemComponent* AbilitySystemComponent;
 public:	
-	virtual void Tick(float DeltaTime) override;
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	void TestFunction1_Implementation() override;
 };

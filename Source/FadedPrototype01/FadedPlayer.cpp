@@ -1,7 +1,6 @@
 #include "FadedPlayer.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
-#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/Controller.h"
@@ -12,7 +11,6 @@
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 AFadedPlayer::AFadedPlayer() {
-	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
