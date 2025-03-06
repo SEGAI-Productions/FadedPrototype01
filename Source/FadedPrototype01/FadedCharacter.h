@@ -2,41 +2,32 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "AbilitySystemInterface.h"
+#include "AbilitySystemComponent.h"
 #include "FadedCharacter.generated.h"
 
-UCLASS(config = Game)
-class AFadedCharacter : public ACharacter
-{
-	GENERATED_BODY()
-
-public:
-	// Sets default values for this character's properties
-	AFadedCharacter();
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-};
-
-
 UINTERFACE(Blueprintable, BlueprintType)
-class UFadedCharacterInterface : public UInterface {
+class UFadedCharacter1Interface : public UInterface {
 	GENERATED_BODY()
 };
 
-class IFadedCharacterInterface {
+class IFadedCharacter1Interface {
 	GENERATED_BODY()
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FadedCharacterInterface")
 	void TestFunction1();
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FadedCharacterInterface")
-	void TestFunction2();
+};
+
+UCLASS(config = Game)
+class AFadedCharacter : public ACharacter, public IAbilitySystemInterface, public IFadedCharacter1Interface {
+	GENERATED_BODY()
+public:
+	AFadedCharacter();
+protected:
+	virtual void BeginPlay() override;
+public:	
+	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	void TestFunction1_Implementation() override;
 };

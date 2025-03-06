@@ -1,34 +1,22 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "FadedCharacter.h"
 
-// Sets default values
-AFadedCharacter::AFadedCharacter()
-{
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+AFadedCharacter::AFadedCharacter() {
 	PrimaryActorTick.bCanEverTick = true;
-
 }
-
-// Called when the game starts or when spawned
-void AFadedCharacter::BeginPlay()
-{
+void AFadedCharacter::BeginPlay() {
 	Super::BeginPlay();
-	
 }
-
-// Called every frame
-void AFadedCharacter::Tick(float DeltaTime)
-{
+void AFadedCharacter::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 
 }
-
-// Called to bind functionality to input
-void AFadedCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
+void AFadedCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
-
+UAbilitySystemComponent* AFadedCharacter::GetAbilitySystemComponent() const {
+    return nullptr;
+}
+void AFadedCharacter::TestFunction1_Implementation() {
+    UE_LOG(LogTemp, Warning, TEXT("TestFunction1_Implementation"));
+}
