@@ -21,7 +21,7 @@ public:
 };
 
 UCLASS(config = Game)
-class AFadedCharacter : public ACharacter, public IAbilitySystemInterface, public IFadedCharacterInterface {
+class FADEDPROTOTYPE01_API AFadedCharacter : public ACharacter, public IAbilitySystemInterface, public IFadedCharacterInterface {
 	GENERATED_BODY()
 public:
 	AFadedCharacter();

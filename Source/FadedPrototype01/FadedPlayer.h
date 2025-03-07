@@ -14,7 +14,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config = Game)
-class AFadedPlayer : public AFadedCharacter {
+class FADEDPROTOTYPE01_API AFadedPlayer : public AFadedCharacter {
 	GENERATED_BODY()
 
 	inline static const float WALK_SPEED = 300.0f;
