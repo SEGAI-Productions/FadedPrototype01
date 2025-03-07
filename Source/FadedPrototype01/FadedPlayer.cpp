@@ -17,9 +17,8 @@ AFadedPlayer::AFadedPlayer() {
 	bUseControllerRotationRoll = false;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
-	GetCharacterMovement()->JumpZVelocity = 700.f;
 	GetCharacterMovement()->AirControl = 0.35f;
-	GetCharacterMovement()->MaxWalkSpeed = 500.f;
+	GetCharacterMovement()->MaxWalkSpeed = WALK_SPEED;
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
@@ -75,10 +74,10 @@ void AFadedPlayer::Look(const FInputActionValue& Value) {
 
 void AFadedPlayer::Sprint(const FInputActionValue& Value) {
     if (Value.Get<bool>()) {
-        GetCharacterMovement()->MaxWalkSpeed = 500.f;
+        GetCharacterMovement()->MaxWalkSpeed = SPRINT_SPEED;
     }
     else {
-        GetCharacterMovement()->MaxWalkSpeed = 200.f;
+        GetCharacterMovement()->MaxWalkSpeed = WALK_SPEED;
     }
 }
 
