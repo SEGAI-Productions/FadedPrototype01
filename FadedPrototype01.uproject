@@ -28,6 +28,10 @@
 		{
 			"Name": "CoverSystem",
 			"Enabled": true
+		},
+		{
+			"Name": "FadedCore",
+			"Enabled": true
 		}
 	]
 }
