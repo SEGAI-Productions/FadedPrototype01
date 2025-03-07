@@ -6,7 +6,7 @@
 #include "AbilitySystemComponent.h"
 #include "Abilities/GameplayAbility.h"
 #include "GameplayTagContainer.h"
-#include "FadedCharacter.generated.h"
+#include "FadedCharacterBase.generated.h"
 
 UINTERFACE(Blueprintable, BlueprintType)
 class UFadedCharacterInterface : public UInterface {
@@ -21,10 +21,10 @@ public:
 };
 
 UCLASS(config = Game)
-class FADEDPROTOTYPE01_API AFadedCharacter : public ACharacter, public IAbilitySystemInterface, public IFadedCharacterInterface {
+class FADEDPROTOTYPE01_API AFadedCharacterBase : public ACharacter, public IAbilitySystemInterface, public IFadedCharacterInterface {
 	GENERATED_BODY()
 public:
-	AFadedCharacter();
+	AFadedCharacterBase();
 protected:
     virtual void BeginPlay() override;
 

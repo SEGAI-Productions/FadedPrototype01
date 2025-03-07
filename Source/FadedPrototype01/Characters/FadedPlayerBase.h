@@ -1,9 +1,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FadedCharacter.h"
+#include "FadedCharacterBase.h"
 #include "Logging/LogMacros.h"
-#include "FadedPlayer.generated.h"
+#include "FadedPlayerBase.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
@@ -14,7 +14,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config = Game)
-class FADEDPROTOTYPE01_API AFadedPlayer : public AFadedCharacter {
+class FADEDPROTOTYPE01_API AFadedPlayerBase : public AFadedCharacterBase {
 	GENERATED_BODY()
 
 	inline static const float WALK_SPEED = 300.0f;
@@ -42,7 +42,7 @@ class FADEDPROTOTYPE01_API AFadedPlayer : public AFadedCharacter {
 	UInputAction* SprintAction;
 
 public:
-    AFadedPlayer();
+    AFadedPlayerBase();
 
 protected:
 	void Move(const FInputActionValue& Value);

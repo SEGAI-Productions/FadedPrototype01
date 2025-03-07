@@ -1,4 +1,4 @@
-#include "FadedPlayer.h"
+#include "FadedPlayerBase.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -11,7 +11,7 @@
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
-AFadedPlayer::AFadedPlayer() {
+AFadedPlayerBase::AFadedPlayerBase() {
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
@@ -31,7 +31,7 @@ AFadedPlayer::AFadedPlayer() {
 	FollowCamera->bUsePawnControlRotation = false;
 }
 
-void AFadedPlayer::NotifyControllerChanged() {
+void AFadedPlayerBase::NotifyControllerChanged() {
     Super::NotifyControllerChanged();
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller)) {
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer())) {
@@ -40,19 +40,19 @@ void AFadedPlayer::NotifyControllerChanged() {
 	}
 }
 
-void AFadedPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
+void AFadedPlayerBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
-		EnhancedInputComponent->BindAction(MoveAction  , ETriggerEvent::Triggered, this, &AFadedPlayer::Move  );
-		EnhancedInputComponent->BindAction(LookAction  , ETriggerEvent::Triggered, this, &AFadedPlayer::Look  );
-		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Triggered, this, &AFadedPlayer::Sprint);
-		EnhancedInputComponent->BindAction(DodgeAction , ETriggerEvent::Triggered, this, &AFadedPlayer::Dodge );
+		EnhancedInputComponent->BindAction(MoveAction  , ETriggerEvent::Triggered, this, &AFadedPlayerBase::Move  );
+		EnhancedInputComponent->BindAction(LookAction  , ETriggerEvent::Triggered, this, &AFadedPlayerBase::Look  );
+		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Triggered, this, &AFadedPlayerBase::Sprint);
+		EnhancedInputComponent->BindAction(DodgeAction , ETriggerEvent::Triggered, this, &AFadedPlayerBase::Dodge );
 	}
 	else {
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
 }
 
-void AFadedPlayer::Move(const FInputActionValue& Value) {
+void AFadedPlayerBase::Move(const FInputActionValue& Value) {
 	FVector2D MovementVector = Value.Get<FVector2D>();
 	if (Controller != nullptr) {
 		const FRotator Rotation = Controller->GetControlRotation();
@@ -64,7 +64,7 @@ void AFadedPlayer::Move(const FInputActionValue& Value) {
 	}
 }
 
-void AFadedPlayer::Look(const FInputActionValue& Value) {
+void AFadedPlayerBase::Look(const FInputActionValue& Value) {
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
 	if (Controller != nullptr) {
 		AddControllerYawInput(LookAxisVector.X);
@@ -72,7 +72,7 @@ void AFadedPlayer::Look(const FInputActionValue& Value) {
 	}
 }
 
-void AFadedPlayer::Sprint(const FInputActionValue& Value) {
+void AFadedPlayerBase::Sprint(const FInputActionValue& Value) {
     if (Value.Get<bool>()) {
         GetCharacterMovement()->MaxWalkSpeed = SPRINT_SPEED;
     }
@@ -81,7 +81,7 @@ void AFadedPlayer::Sprint(const FInputActionValue& Value) {
     }
 }
 
-void AFadedPlayer::Dodge(const FInputActionValue& Value) {
+void AFadedPlayerBase::Dodge(const FInputActionValue& Value) {
     if (Value.Get<bool>()) {
         FGameplayTag DodgeTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Dodge"));
         bool activated = ActivateAbilityByTag(DodgeTag);

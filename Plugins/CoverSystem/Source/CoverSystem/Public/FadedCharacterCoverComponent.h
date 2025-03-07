@@ -3,7 +3,7 @@
 #include "CoreMinimal.h"
 #include "CoverComponent.h"
 #include "CoverSystemInterface.h"
-#include "FadedPrototype01/FadedCharacter.h"
+#include "FadedPrototype01/Characters/FadedCharacterBase.h"
 #include "FadedCharacterCoverComponent.generated.h"
 
 class AFadedCharacter;
@@ -26,7 +26,7 @@ protected:
 	
 	// The FadedCharacter owner
 	UPROPERTY()
-	AFadedCharacter* FadedCharacterOwner;
+	AFadedCharacterBase* FadedCharacterOwner;
 	
 	// The input action for entering cover
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")

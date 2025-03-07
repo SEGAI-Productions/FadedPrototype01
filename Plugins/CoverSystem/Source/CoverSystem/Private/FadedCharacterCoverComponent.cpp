@@ -13,7 +13,7 @@ void UFadedCharacterCoverComponent::BeginPlay()
 	Super::BeginPlay();
 	
 	// Get the FadedCharacter owner
-	FadedCharacterOwner = Cast<AFadedCharacter>(GetOwner());
+	FadedCharacterOwner = Cast<AFadedCharacterBase>(GetOwner());
 }
 
 void UFadedCharacterCoverComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
