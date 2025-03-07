@@ -8,7 +8,7 @@
 /**
  * Base class for all cover system gameplay abilities
  */
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class COVERSYSTEM_API UCoverGameplayAbility : public UGameplayAbility
 {
 	GENERATED_BODY()

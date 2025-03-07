@@ -11,7 +11,7 @@ class AFadedCharacter;
 /**
  * Cover component specifically designed for FadedCharacter
  */
-UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+UCLASS()
 class COVERSYSTEM_API UFadedCharacterCoverComponent : public UCoverComponent
 {
 	GENERATED_BODY()

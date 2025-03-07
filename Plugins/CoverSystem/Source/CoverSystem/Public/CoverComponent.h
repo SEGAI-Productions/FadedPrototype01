@@ -13,7 +13,7 @@ class UAbilitySystemComponent;
 /**
  * Component that provides cover functionality to characters
  */
-UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class COVERSYSTEM_API UCoverComponent : public UActorComponent
 {
 	GENERATED_BODY()
