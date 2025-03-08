@@ -11,7 +11,8 @@ public class FadedPrototype01 : ModuleRules {
 			"EnhancedInput", 
 			"GameplayAbilities", 
 			"GameplayTags", 
-			"GameplayTasks"
+			"GameplayTasks",
+			"FadedCore",
 		});
 		PrivateDependencyModuleNames.AddRange(new string[] { });
 	}

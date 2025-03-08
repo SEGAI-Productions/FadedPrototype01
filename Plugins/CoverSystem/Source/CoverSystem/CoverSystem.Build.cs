@@ -29,6 +29,7 @@ public class CoverSystem : ModuleRules
 				"GameplayAbilities",
 				"GameplayTags",
 				"GameplayTasks",
+				"FadedCore",
 				"FadedPrototype01",
                 "NavigationSystem"
             }

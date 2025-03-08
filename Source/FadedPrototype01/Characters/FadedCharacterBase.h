@@ -6,19 +6,8 @@
 #include "AbilitySystemComponent.h"
 #include "Abilities/GameplayAbility.h"
 #include "GameplayTagContainer.h"
+#include "FadedCore/Public/Interfaces/FadedCharacterInterface.h"
 #include "FadedCharacterBase.generated.h"
-
-UINTERFACE(Blueprintable, BlueprintType)
-class UFadedCharacterInterface : public UInterface {
-	GENERATED_BODY()
-};
-
-class IFadedCharacterInterface {
-	GENERATED_BODY()
-public:
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FadedCharacterInterface")
-	void TestFunction1();
-};
 
 UCLASS(config = Game)
 class FADEDPROTOTYPE01_API AFadedCharacterBase : public ACharacter, public IAbilitySystemInterface, public IFadedCharacterInterface {
