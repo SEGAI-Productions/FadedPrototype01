@@ -20,11 +20,11 @@ UCoverComponent::UCoverComponent()
 	CurrentCoverNormal = FVector::ZeroVector;
 	
 	// Initialize gameplay tags
-	EnterCoverTag = FGameplayTag::RequestGameplayTag(FName("Ability.Cover.Enter"));
-	ExitCoverTag = FGameplayTag::RequestGameplayTag(FName("Ability.Cover.Exit"));
-	FireFromCoverTag = FGameplayTag::RequestGameplayTag(FName("Ability.Cover.Fire"));
-	BlindFireTag = FGameplayTag::RequestGameplayTag(FName("Ability.Cover.BlindFire"));
-	MoveToAdjacentCoverTag = FGameplayTag::RequestGameplayTag(FName("Ability.Cover.MoveToAdjacent"));
+	EnterCoverTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	ExitCoverTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	FireFromCoverTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	BlindFireTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	MoveToAdjacentCoverTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Cover"));
 }
 
 // Called when the game starts

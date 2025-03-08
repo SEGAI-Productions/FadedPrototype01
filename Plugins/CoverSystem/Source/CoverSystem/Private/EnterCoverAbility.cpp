@@ -6,7 +6,7 @@
 UEnterCoverAbility::UEnterCoverAbility()
 {
 	// Set the ability tag
-	AbilityTag = FGameplayTag::RequestGameplayTag(FName("Ability.Cover.Enter"));
+	AbilityTag = FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Cover"));
 	
 	// This ability requires the actor to not be in cover
 	bRequiresNotInCover = true;
@@ -17,7 +17,7 @@ UEnterCoverAbility::UEnterCoverAbility()
 	AbilityTriggers.Add(TriggerData);
 	
 	// Set the ability tags
-	ActivationOwnedTags.AddTag(FGameplayTag::RequestGameplayTag(FName("State.Cover.Entering")));
+	ActivationOwnedTags.AddTag(FGameplayTag::RequestGameplayTag(FName("Faded.Abilities.Movement.Cover")));
 }
 
 void UEnterCoverAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)

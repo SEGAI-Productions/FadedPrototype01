@@ -90,16 +90,16 @@ void UCoverSystemManager::RegisterGameplayTags()
 	UGameplayTagsManager& TagsManager = UGameplayTagsManager::Get();
 	
 	// Register the cover system tags
-	TagsManager.AddNativeGameplayTag(FName("Ability.Cover.Enter"));
-	TagsManager.AddNativeGameplayTag(FName("Ability.Cover.Exit"));
-	TagsManager.AddNativeGameplayTag(FName("Ability.Cover.Fire"));
-	TagsManager.AddNativeGameplayTag(FName("Ability.Cover.BlindFire"));
-	TagsManager.AddNativeGameplayTag(FName("Ability.Cover.MoveToAdjacent"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
 	
-	TagsManager.AddNativeGameplayTag(FName("State.Cover.InCover"));
-	TagsManager.AddNativeGameplayTag(FName("State.Cover.Entering"));
-	TagsManager.AddNativeGameplayTag(FName("State.Cover.Exiting"));
-	TagsManager.AddNativeGameplayTag(FName("State.Cover.Firing"));
-	TagsManager.AddNativeGameplayTag(FName("State.Cover.BlindFiring"));
-	TagsManager.AddNativeGameplayTag(FName("State.Cover.MovingToAdjacent"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
+	TagsManager.AddNativeGameplayTag(FName("Faded.Abilities.Movement.Cover"));
 } 
