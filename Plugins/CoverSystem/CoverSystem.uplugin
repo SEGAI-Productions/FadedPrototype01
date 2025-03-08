@@ -27,11 +27,11 @@
 			"Enabled": true
 		},
 		{
-			"Name": "EnhancedInput",
+			"Name": "FadedCore",
 			"Enabled": true
 		},
 		{
-			"Name": "FadedCore",
+			"Name": "EnhancedInput",
 			"Enabled": true
 		}
 	]
