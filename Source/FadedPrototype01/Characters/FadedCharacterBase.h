@@ -7,6 +7,7 @@
 #include "Abilities/GameplayAbility.h"
 #include "GameplayTagContainer.h"
 #include "FadedCore/Public/Interfaces/FadedCharacterInterface.h"
+#include "FadedCore/Public/Components/FadedCharacterEventsComponent.h"
 #include "FadedCharacterBase.generated.h"
 
 UCLASS(config = Game)
@@ -19,17 +20,12 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Abilities")
 	UAbilitySystemComponent* AbilitySystemComponent;
-	
-	// Ability class that can be set in the editor
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Abilities")
-	TSubclassOf<UGameplayAbility> DodgeAbilityClass;
-	
-	// Array of default abilities to grant
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Abilities")
-	TArray<TSubclassOf<UGameplayAbility>> DefaultAbilities;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PoCharacterInterface")
+	TObjectPtr<UFadedCharacterEventsComponent> Events;
 public:	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	void TestFunction1_Implementation() override;
+	UFadedCharacterEventsComponent* GetEvents_Implementation() override;
 	
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
 	bool ActivateAbilityByTag(const FGameplayTag& AbilityTag);

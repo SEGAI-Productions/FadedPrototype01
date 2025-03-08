@@ -11,6 +11,7 @@ AFadedCharacterBase::AFadedCharacterBase() {
     static ConstructorHelpers::FObjectFinder<USkeletalMesh> MeshAsset(TEXT("/Game/Characters/Common/Meshes/SKM_Fader"));
     if (MeshAsset.Succeeded()) { GetMesh()->SetSkeletalMesh(MeshAsset.Object); }
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("Ability System Component"));
+	Events = CreateDefaultSubobject<UFadedCharacterEventsComponent>(TEXT("Character Events Component"));
 }
 
 void AFadedCharacterBase::BeginPlay() {
@@ -26,8 +27,8 @@ UAbilitySystemComponent* AFadedCharacterBase::GetAbilitySystemComponent() const 
     return AbilitySystemComponent;
 }
 
-void AFadedCharacterBase::TestFunction1_Implementation() {
-    UE_LOG(LogTemp, Warning, TEXT("TestFunction1_Implementation"));
+UFadedCharacterEventsComponent* AFadedCharacterBase::GetEvents_Implementation() {
+	return Events;
 }
 
 bool AFadedCharacterBase::ActivateAbilityByTag(const FGameplayTag& AbilityTag) {
